@@ -1,6 +1,6 @@
 <div align="center">
 
-# 👋 Hi, I'm Matthew Galang
+  👋 Hi, I'm Matthew Galang
 
 <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=24&pause=1000&color=00F7FF&center=true&vCenter=true&width=600&lines=Full-Stack+Developer;WebSocket+%26+IoT+Developer;PHP+%7C+CodeIgniter+%7C+JavaScript;Building+Real-Time+Systems" />
 
@@ -55,19 +55,22 @@
 <div align="center">
 
 <a href="https://matty2929.github.io/matt.github.io/MY_PORTFOLIO.html">
-  <img src="https://img.shields.io/badge/Portfolio-111827?style=for-the-badge&logo=firefox&logoColor=00F7FF" />
+  Portfolio
 </a>
+&nbsp;&nbsp;•&nbsp;&nbsp;
 
 <a href="https://www.linkedin.com/in/matthew-galang-815330290">
-  <img src="https://img.shields.io/badge/LinkedIn-111827?style=for-the-badge&logo=linkedin&logoColor=00F7FF" />
+  LinkedIn
 </a>
+&nbsp;&nbsp;•&nbsp;&nbsp;
 
 <a href="mailto:matthew.galang.dit.cvsu@gmail.com">
-  <img src="https://img.shields.io/badge/Gmail-111827?style=for-the-badge&logo=gmail&logoColor=00F7FF" />
+  Gmail
 </a>
+&nbsp;&nbsp;•&nbsp;&nbsp;
 
 <a href="tel:09855637545">
-  <img src="https://img.shields.io/badge/Phone-111827?style=for-the-badge&logo=whatsapp&logoColor=00F7FF" />
+  Phone
 </a>
 
 </div>
