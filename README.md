@@ -50,30 +50,12 @@
 
 ---
 
-# 🌐 Connect With Me
+## 📫 Connect With Me
 
-<div align="center">
-
-<a href="https://matty2929.github.io/matt.github.io/MY_PORTFOLIO.html">
-  Portfolio
-</a>
-&nbsp;&nbsp;•&nbsp;&nbsp;
-
-<a href="https://www.linkedin.com/in/matthew-galang-815330290">
-  LinkedIn
-</a>
-&nbsp;&nbsp;•&nbsp;&nbsp;
-
-<a href="mailto:matthew.galang.dit.cvsu@gmail.com">
-  Gmail
-</a>
-&nbsp;&nbsp;•&nbsp;&nbsp;
-
-<a href="tel:09855637545">
-  Phone
-</a>
-
-</div>
+- Portfolio: https://matty2929.github.io/matt.github.io/MY_PORTFOLIO.html
+- LinkedIn: https://www.linkedin.com/in/matthew-galang-815330290
+- Email: matthew.galang.dit.cvsu@gmail.com
+- Phone: 09855637545
 
 ---
 
