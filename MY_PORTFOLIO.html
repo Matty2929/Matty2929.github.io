@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matthew Galang | Full-Stack Developer</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --bg: #070b14;
+      --card: #101826;
+      --card2: #0d1420;
+      --primary: #4f8cff;
+      --secondary: #00d2ff;
+      --text: #ffffff;
+      --muted: #aab3c5;
+      --border: rgba(255, 255, 255, 0.08);
+      --gradient: linear-gradient(135deg, #4f8cff, #00d2ff);
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at top left, rgba(79, 140, 255, 0.20), transparent 25%),
+        radial-gradient(circle at bottom right, rgba(0, 210, 255, 0.15), transparent 25%);
+      z-index: -1;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1250px;
+      margin: auto;
+    }
+
+    /* NAVBAR */
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+      backdrop-filter: blur(12px);
+      background: rgba(7, 11, 20, 0.75);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 35px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-text h3 {
+      color: var(--secondary);
+      margin-bottom: 15px;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .hero-text h1 {
+      font-size: 4rem;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      font-weight: 800;
+    }
+
+    .hero-text h1 span {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-text p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 35px;
+      max-width: 700px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 15px 28px;
+      border-radius: 14px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-primary {
+      background: var(--gradient);
+      color: #fff;
+      box-shadow: 0 10px 30px rgba(79, 140, 255, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: #fff;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 40px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: rgba(79, 140, 255, 0.15);
+      border-radius: 50%;
+      top: -80px;
+      right: -80px;
+      filter: blur(20px);
+    }
+
+    .code-window {
+      background: #0a101b;
+      border-radius: 18px;
+      padding: 25px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .code-header {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .red {
+      background: #ff5f57;
+    }
+
+    .yellow {
+      background: #febc2e;
+    }
+
+    .green {
+      background: #28c840;
+    }
+
+    .code {
+      font-family: monospace;
+      line-height: 2;
+      color: #d6e1ff;
+      font-size: 0.95rem;
+    }
+
+    .code .blue {
+      color: #61dafb;
+    }
+
+    .code .green-text {
+      color: #7ee787;
+    }
+
+    .code .purple {
+      color: #d2a8ff;
+    }
+
+    /* SECTION */
+
+    section {
+      padding: 110px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 70px;
+    }
+
+    .section-title h2 {
+      font-size: 2.7rem;
+      margin-bottom: 15px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 650px;
+      margin: auto;
+      line-height: 1.7;
+    }
+
+    /* ABOUT */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 35px;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 35px;
+      transition: 0.3s;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(79, 140, 255, 0.3);
+    }
+
+    .glass-card h3 {
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+    }
+
+    .glass-card p {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    /* SKILLS */
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .skill-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 30px;
+      border-radius: 22px;
+      transition: 0.3s;
+    }
+
+    .skill-box:hover {
+      transform: translateY(-5px);
+      background: var(--card2);
+    }
+
+    .skill-box i {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--secondary);
+    }
+
+    .skill-box h4 {
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+
+    .skill-box p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    /* PROJECTS */
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    .project-card {
+      background: linear-gradient(180deg, #101826, #0b121d);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      overflow: hidden;
+      transition: 0.35s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(79, 140, 255, 0.35);
+    }
+
+    .project-image {
+      height: 220px;
+      background: linear-gradient(135deg, #4f8cff, #00d2ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+
+    .project-content {
+      padding: 30px;
+    }
+
+    .project-content h3 {
+      margin-bottom: 15px;
+    }
+
+    .project-content p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(79, 140, 255, 0.12);
+      color: #9cc0ff;
+      font-size: 0.85rem;
+    }
+
+    /* EXPERIENCE */
+
+    .timeline {
+      position: relative;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      width: 2px;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 70px;
+      margin-bottom: 60px;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 10px;
+      top: 5px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--gradient);
+      box-shadow: 0 0 20px rgba(79, 140, 255, 0.5);
+    }
+
+    .timeline-content {
+      background: var(--card);
+      padding: 30px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+    }
+
+    .timeline-content h3 {
+      margin-bottom: 10px;
+    }
+
+    .timeline-content span {
+      color: var(--secondary);
+      font-size: 0.95rem;
+    }
+
+    .timeline-content p {
+      color: var(--muted);
+      margin-top: 18px;
+      line-height: 1.8;
+    }
+
+    /* CONTACT */
+
+    .contact-box {
+      text-align: center;
+      background: linear-gradient(180deg, #101826, #0a1019);
+      border: 1px solid var(--border);
+      padding: 60px;
+      border-radius: 30px;
+    }
+
+    .contact-box h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      max-width: 700px;
+      margin: auto auto 35px;
+      line-height: 1.8;
+    }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 35px;
+    }
+
+    .socials a {
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: #fff;
+      text-decoration: none;
+      transition: 0.3s;
+      font-size: 1.2rem;
+    }
+
+    .socials a:hover {
+      transform: translateY(-5px);
+      background: rgba(79, 140, 255, 0.15);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:980px) {
+
+      .hero-content,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-text h1 {
+        font-size: 3rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media(max-width:600px) {
+
+      .hero-text h1 {
+        font-size: 2.3rem;
+      }
+
+      .section-title h2 {
+        font-size: 2rem;
+      }
+
+      .contact-box {
+        padding: 40px 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+    <div class="container nav-wrapper">
+      <div class="logo">mtthw.dev</div>
+
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+    <div class="container hero-content">
+
+      <div class="hero-text">
+        <h3>Full-Stack Software Developer</h3>
+
+        <h1>
+          Building Modern <span>Web Systems</span> &
+          Smart Automation Solutions
+        </h1>
+
+        <p>
+          I’m Matthew Galang — a Full-Stack Developer specializing in HRMS systems,
+          payroll automation, IoT integrations, REST APIs, machine learning solutions,
+          and scalable business applications using PHP, JavaScript, Python, and MySQL.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">
+            <i class="fa-solid fa-code"></i>
+            View Projects
+          </a>
+
+          <a href="#contact" class="btn btn-secondary">
+            <i class="fa-solid fa-paper-plane"></i>
+            Contact Me
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+
+        <div class="code-window">
+
+          <div class="code-header">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+          </div>
+
+          <div class="code">
+            <span class="purple">const</span> developer = { <br><br>
+
+            &nbsp;&nbsp;<span class="blue">name</span>:
+            <span class="green-text">"Matthew Galang"</span>,<br>
+
+            &nbsp;&nbsp;<span class="blue">role</span>:
+            <span class="green-text">"Full-Stack Developer"</span>,<br>
+
+            &nbsp;&nbsp;<span class="blue">stack</span>: [
+            <span class="green-text">"PHP"</span>,
+            <span class="green-text">"JavaScript"</span>,
+            <span class="green-text">"Python"</span>
+            ],<br>
+
+            &nbsp;&nbsp;<span class="blue">specialties</span>: [
+            <span class="green-text">"HRMS"</span>,
+            <span class="green-text">"REST APIs"</span>,
+            <span class="green-text">"Automation"</span>,
+            <span class="green-text">"Machine Learning"</span>
+            ]<br><br>
+
+            };
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>About Me</h2>
+        <p>
+          Passionate about developing scalable systems, optimizing workflows,
+          and building reliable digital solutions for real-world business operations.
+        </p>
+      </div>
+
+      <div class="about-grid">
+
+        <div class="glass-card">
+          <h3>Who I Am</h3>
+
+          <p>
+            I’m a software developer with professional experience in developing
+            enterprise-grade HRMS systems, payroll processing platforms,
+            e-commerce systems, and automation tools.
+            I focus on writing maintainable code, building efficient backend logic,
+            and designing responsive user interfaces with modern technologies.
+          </p>
+        </div>
+
+        <div class="glass-card">
+          <h3>What I Do</h3>
+
+          <p>
+            I specialize in full-stack development using PHP (CodeIgniter),
+            JavaScript, MySQL, Python, and REST APIs.
+            I also work with IoT integrations, AI-assisted development workflows,
+            machine learning models using YOLO v8,
+            and cloud-to-offline synchronization systems.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+
+  <section id="skills">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Technical Skills</h2>
+        <p>
+          Technologies, frameworks, and tools I use to build scalable applications
+          and intelligent systems.
+        </p>
+      </div>
+
+      <div class="skills-grid">
+
+        <div class="skill-box">
+          <i class="fa-solid fa-code"></i>
+          <h4>Frontend Development</h4>
+          <p>
+            HTML, CSS, JavaScript, jQuery, Bootstrap, TailwindCSS,
+            responsive UI/UX, modern web interfaces, reusable components.
+          </p>
+        </div>
+
+        <div class="skill-box">
+          <i class="fa-solid fa-server"></i>
+          <h4>Backend Development</h4>
+          <p>
+            PHP, CodeIgniter, REST APIs, authentication systems,
+            payroll computation logic, approval workflows,
+            audit logging, business logic implementation.
+          </p>
+        </div>
+
+        <div class="skill-box">
+          <i class="fa-solid fa-database"></i>
+          <h4>Database Systems</h4>
+          <p>
+            MySQL, MariaDB, SQLite, database normalization,
+            query optimization, reporting systems,
+            and data traceability.
+          </p>
+        </div>
+
+        <div class="skill-box">
+          <i class="fa-solid fa-microchip"></i>
+          <h4>IoT & Automation</h4>
+          <p>
+            Machine communication, automation systems,
+            cloud-to-device synchronization,
+            smart control systems, and real-time processing.
+          </p>
+        </div>
+
+        <div class="skill-box">
+          <i class="fa-solid fa-robot"></i>
+          <h4>Machine Learning</h4>
+          <p>
+            YOLO v8 model training, dataset preparation,
+            annotation, object detection,
+            and AI-assisted development workflows.
+          </p>
+        </div>
+
+        <div class="skill-box">
+          <i class="fa-solid fa-git-alt"></i>
+          <h4>Tools & Workflow</h4>
+          <p>
+            Git, GitHub, ChatGPT, Gemini, Claude, DeepSeek,
+            debugging, optimization, code review,
+            and collaborative development.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PROJECTS -->
+
+  <section id="projects">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Featured Projects</h2>
+        <p>
+          Enterprise applications, automation systems,
+          and AI-powered solutions developed professionally.
+        </p>
+      </div>
+
+      <div class="projects">
+
+        <div class="project-card">
+
+          <div class="project-image">
+            <i class="fa-solid fa-users-gear"></i>
+          </div>
+
+          <div class="project-content">
+
+            <h3>Payroll & HRMS System</h3>
+
+            <p>
+              Developed a complete HRMS and payroll management system with
+              attendance tracking, overtime processing, leave management,
+              approval workflows, audit logging, and reporting dashboards.
+            </p>
+
+            <div class="tags">
+              <div class="tag">PHP</div>
+              <div class="tag">CodeIgniter</div>
+              <div class="tag">MySQL</div>
+              <div class="tag">REST API</div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="project-card">
+
+          <div class="project-image">
+            <i class="fa-solid fa-store"></i>
+          </div>
+
+          <div class="project-content">
+
+            <h3>Medical E-Commerce Platform</h3>
+
+            <p>
+              Designed and built a responsive medical e-commerce application with
+              product management, authentication, secure data handling,
+              inventory controls, and order processing.
+            </p>
+
+            <div class="tags">
+              <div class="tag">JavaScript</div>
+              <div class="tag">PHP</div>
+              <div class="tag">MySQL</div>
+              <div class="tag">Bootstrap</div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="project-card">
+
+          <div class="project-image">
+            <i class="fa-solid fa-brain"></i>
+          </div>
+
+          <div class="project-content">
+
+            <h3>YOLO v8 AI Systems</h3>
+
+            <p>
+              Developed machine learning solutions for object detection,
+              waste classification, medicine validation,
+              road crack detection, and smart sensor-assisted systems.
+            </p>
+
+            <div class="tags">
+              <div class="tag">Python</div>
+              <div class="tag">YOLO v8</div>
+              <div class="tag">Machine Learning</div>
+              <div class="tag">AI</div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- EXPERIENCE -->
+
+  <section id="experience">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Professional Experience</h2>
+        <p>
+          My professional journey in software development and system engineering.
+        </p>
+      </div>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+
+          <div class="timeline-dot"></div>
+
+          <div class="timeline-content">
+
+            <h3>Full-Stack Developer</h3>
+
+            <span>Technos Systems Engineering Services • Jan 2024 - Present</span>
+
+            <p>
+              Developed enterprise HRMS systems, payroll solutions,
+              distributed canteen management platforms,
+              machine learning integrations, and automation systems.
+              Focused on scalable backend architecture,
+              database optimization, and responsive web applications.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="timeline-item">
+
+          <div class="timeline-dot"></div>
+
+          <div class="timeline-content">
+
+            <h3>Bachelor of Science in Computer Science</h3>
+
+            <span>Cavite State University – Silang Campus • 2019 - 2023</span>
+
+            <p>
+              Built a strong foundation in software engineering,
+              database systems, algorithms, networking,
+              and machine learning concepts.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <div class="container">
+
+      <div class="contact-box">
+
+        <h2>Let’s Build Something Great</h2>
+
+        <p>
+          Interested in working together or discussing a project?
+          Feel free to reach out for collaborations,
+          freelance projects, or full-time opportunities.
+        </p>
+
+        <a href="mailto:matthew.galang.dit.cvsu@gmail.com" class="btn btn-primary">
+          <i class="fa-solid fa-rocket"></i>
+          Start a Project
+        </a>
+
+        <div class="socials">
+
+          <a href="https://github.com/Matty2929" target="_blank">
+            <i class="fa-brands fa-github"></i>
+          </a>
+
+          <a href="https://www.linkedin.com/in/matthew-galang-815330290/" target="_blank">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+
+          <!-- OPEN CV -->
+          <a href="MATTHEW.pdf" target="_blank" title="View CV">
+            <i class="fa-solid fa-file-code"></i>
+          </a>
+
+          <!-- DOWNLOAD CV -->
+          <a href="MATTHEW.pdf" download title="Download CV">
+            <i class="fa-solid fa-download"></i>
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    © 2026 Matthew Galang — Full-Stack Developer Portfolio
+  </footer>
+
+</body>
+
+</html>
