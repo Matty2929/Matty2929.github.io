@@ -1,6 +1,6 @@
 <div align="center">
-
-# 👋 Hi, I'm Matthew Galang
+    
+👋 Hi, I'm Matthew Galang
 
 <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=24&pause=1000&color=00F7FF&center=true&vCenter=true&width=600&lines=Full-Stack+Developer;WebSocket+%26+IoT+Developer;PHP+%7C+CodeIgniter+%7C+JavaScript;Building+Real-Time+Systems" />
 
@@ -62,6 +62,6 @@ while(alive) {
 
 <div align="center">
 
-### 🔥 “Building systems that connect software with real-world machines.”
+🔥 “Building systems that connect software with real-world machines.”
 
 </div>
