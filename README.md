@@ -29,8 +29,8 @@
 
 ## 📫 Connect With Me
 
-- Portfolio: [your-portfolio-link](https://matty2929.github.io/matt.github.io/MY_PORTFOLIO.html)
-- LinkedIn: [your-linkedin-link](https://www.linkedin.com/in/matthew-galang-815330290)
+- Portfolio: https://matty2929.github.io/matt.github.io/MY_PORTFOLIO.html
+- LinkedIn: https://www.linkedin.com/in/matthew-galang-815330290
 - Email: matthew.galang.dit.cvsu@gmail.com
 - Phone: 09855637545
 
