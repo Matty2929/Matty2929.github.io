@@ -17,11 +17,17 @@
 
 ---
 
-# 🛠️ Tech Stack
+# 🚀 Development Stack
 
 <div align="center">
 
-<img src="https://skillicons.dev/icons?i=html,css,js,php,mysql,bootstrap,git,github,vscode" />
+<img src="https://skillicons.dev/icons?i=php,js,bootstrap,tailwind,python,mysql,sqlite,git,github,vscode" />
+
+</div>
+
+<div align="center">
+
+<img src="https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white" />
 
 </div>
 
