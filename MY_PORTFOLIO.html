@@ -15,6 +15,11 @@
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
+  <!-- Owl Carousel CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
   <style>
     * {
       margin: 0;
@@ -409,6 +414,29 @@
       font-size: 0.85rem;
     }
 
+    /* Owl*/
+    .owl-carousel .project-card {
+      margin: 10px;
+    }
+
+    .owl-nav button {
+      font-size: 30px !important;
+      color: white !important;
+    }
+
+    .owl-dots {
+      margin-top: 20px;
+    }
+
+    /* Make all owl items equal height */
+    .owl-carousel .owl-stage {
+      display: flex;
+    }
+
+    .owl-carousel .owl-item {
+      display: flex;
+    }
+
     /* EXPERIENCE */
 
     .timeline {
@@ -465,6 +493,8 @@
       margin-top: 18px;
       line-height: 1.8;
     }
+
+
 
     /* CONTACT */
 
@@ -788,212 +818,240 @@
         </p>
       </div>
 
-      <div class="projects">
+      <!-- PROJECTS -->
+      <section id="projects">
 
-        <div class="project-card">
+        <div class="container">
 
-          <div class="project-image">
-            <i class="fa-solid fa-users-gear"></i>
+          <div class="section-title">
+            <h2>Featured Projects</h2>
+            <p>
+              Enterprise applications, automation systems,
+              and AI-powered solutions developed professionally.
+            </p>
           </div>
 
-          <div class="project-content">
+          <!-- OWL CAROUSEL -->
+          <div class="projects owl-carousel">
 
-            <h3>Payroll & HRMS System</h3>
+            <!-- CARD 1 -->
+            <div class="project-card">
+              <div class="project-image"><i class="fa-solid fa-users-gear"></i></div>
+              <div class="project-content">
+                <h3>Payroll & HRMS System</h3>
+                <p>
+                  Developed an HRMS and payroll system with attendance tracking, overtime processing, leave management,
+                  approvals, and reporting dashboard.
+                </p>
+                <div class="tags">
+                  <div class="tag">PHP</div>
+                  <div class="tag">CodeIgniter</div>
+                  <div class="tag">MySQL</div>
+                  <div class="tag">REST API</div>
+                </div>
+              </div>
+            </div>
 
+            <!-- CARD 2 -->
+            <div class="project-card">
+              <div class="project-image"><i class="fa-solid fa-store"></i></div>
+              <div class="project-content">
+                <h3>Medical E-Commerce</h3>
+                <p>
+                  Built a responsive medical e-commerce system with product management, authentication, inventory
+                  control, secure checkout, and order processing.
+                </p>
+                <div class="tags">
+                  <div class="tag">JavaScript</div>
+                  <div class="tag">PHP</div>
+                  <div class="tag">MySQL</div>
+                  <div class="tag">Bootstrap</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="project-card">
+              <div class="project-image"><i class="fa-solid fa-utensils"></i></div>
+              <div class="project-content">
+                <h3>Canteen System</h3>
+                <p>
+                  Created a canteen system with offline Python barcode scanning and CodeIgniter admin panel featuring
+                  real-time sync, analytics, and cloud integration.
+                </p>
+                <div class="tags">
+                  <div class="tag">Python</div>
+                  <div class="tag">PHP</div>
+                  <div class="tag">CodeIgniter</div>
+                  <div class="tag">MySQL</div>
+                  <div class="tag">Barcode Scanning</div>
+                  <div class="tag">Sync System</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 4 -->
+            <div class="project-card">
+              <div class="project-image"><i class="fa-solid fa-brain"></i></div>
+              <div class="project-content">
+                <h3>YOLO AI Systems</h3>
+                <p>
+                  Developed AI systems for object detection, waste classification, medicine validation, road crack
+                  detection, and smart automation solutions.
+                </p>
+                <div class="tags">
+                  <div class="tag">Python</div>
+                  <div class="tag">YOLO v8</div>
+                  <div class="tag">Machine Learning</div>
+                  <div class="tag">AI</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+      
+      <!-- EXPERIENCE -->
+
+      <section id="experience">
+
+        <div class="container">
+
+          <div class="section-title">
+            <h2>Professional Experience</h2>
             <p>
-              Developed a complete HRMS and payroll management system with
-              attendance tracking, overtime processing, leave management,
-              approval workflows, audit logging, and reporting dashboards.
+              My professional journey in software development and system engineering.
             </p>
+          </div>
 
-            <div class="tags">
-              <div class="tag">PHP</div>
-              <div class="tag">CodeIgniter</div>
-              <div class="tag">MySQL</div>
-              <div class="tag">REST API</div>
+          <div class="timeline">
+
+            <div class="timeline-item">
+
+              <div class="timeline-dot"></div>
+
+              <div class="timeline-content">
+
+                <h3>Full-Stack Developer</h3>
+
+                <span>Technos Systems Engineering Services • Jan 2024 - Present</span>
+
+                <p>
+                  Developed enterprise HRMS systems, payroll solutions,
+                  distributed canteen management platforms,
+                  machine learning integrations, and automation systems.
+                  Focused on scalable backend architecture,
+                  database optimization, and responsive web applications.
+                </p>
+
+              </div>
+
+            </div>
+
+            <div class="timeline-item">
+
+              <div class="timeline-dot"></div>
+
+              <div class="timeline-content">
+
+                <h3>Bachelor of Science in Computer Science</h3>
+
+                <span>Cavite State University – Silang Campus • 2019 - 2023</span>
+
+                <p>
+                  Built a strong foundation in software engineering,
+                  database systems, algorithms, networking,
+                  and machine learning concepts.
+                </p>
+
+              </div>
+
             </div>
 
           </div>
 
         </div>
 
-        <div class="project-card">
+      </section>
 
-          <div class="project-image">
-            <i class="fa-solid fa-store"></i>
-          </div>
+      <!-- CONTACT -->
 
-          <div class="project-content">
+      <section id="contact">
 
-            <h3>Medical E-Commerce Platform</h3>
+        <div class="container">
+
+          <div class="contact-box">
+
+            <h2>Let’s Build Something Great</h2>
 
             <p>
-              Designed and built a responsive medical e-commerce application with
-              product management, authentication, secure data handling,
-              inventory controls, and order processing.
+              Interested in working together or discussing a project?
+              Feel free to reach out for collaborations,
+              freelance projects, or full-time opportunities.
             </p>
 
-            <div class="tags">
-              <div class="tag">JavaScript</div>
-              <div class="tag">PHP</div>
-              <div class="tag">MySQL</div>
-              <div class="tag">Bootstrap</div>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=matthew.galang.dit.cvsu@gmail.com&su=Project%20Inquiry"
+              target="_blank" class="btn btn-primary">
+              <i class="fa-solid fa-rocket"></i>
+              Start a Project
+            </a>
+
+            <div class="socials">
+
+              <a href="https://github.com/Matty2929" target="_blank">
+                <i class="fa-brands fa-github"></i>
+              </a>
+
+              <a href="https://www.linkedin.com/in/matthew-galang-815330290/" target="_blank">
+                <i class="fa-brands fa-linkedin"></i>
+              </a>
+
+              <!-- OPEN CV -->
+              <a href="MATTHEW.pdf" target="_blank" title="View CV">
+                <i class="fa-solid fa-file-pdf"></i> </a>
+
+              <!-- DOWNLOAD CV -->
+              <a href="MATTHEW.pdf" download title="Download CV">
+                <i class="fa-solid fa-download"></i>
+              </a>
+
             </div>
 
           </div>
 
         </div>
 
-        <div class="project-card">
+      </section>
 
-          <div class="project-image">
-            <i class="fa-solid fa-brain"></i>
-          </div>
+      <!-- FOOTER -->
 
-          <div class="project-content">
+      <footer>
+        © 2026 Matthew Galang — Full-Stack Developer Portfolio
+      </footer>
 
-            <h3>YOLO v8 AI Systems</h3>
+      <!-- SCRIPTS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
-            <p>
-              Developed machine learning solutions for object detection,
-              waste classification, medicine validation,
-              road crack detection, and smart sensor-assisted systems.
-            </p>
-
-            <div class="tags">
-              <div class="tag">Python</div>
-              <div class="tag">YOLO v8</div>
-              <div class="tag">Machine Learning</div>
-              <div class="tag">AI</div>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- EXPERIENCE -->
-
-  <section id="experience">
-
-    <div class="container">
-
-      <div class="section-title">
-        <h2>Professional Experience</h2>
-        <p>
-          My professional journey in software development and system engineering.
-        </p>
-      </div>
-
-      <div class="timeline">
-
-        <div class="timeline-item">
-
-          <div class="timeline-dot"></div>
-
-          <div class="timeline-content">
-
-            <h3>Full-Stack Developer</h3>
-
-            <span>Technos Systems Engineering Services • Jan 2024 - Present</span>
-
-            <p>
-              Developed enterprise HRMS systems, payroll solutions,
-              distributed canteen management platforms,
-              machine learning integrations, and automation systems.
-              Focused on scalable backend architecture,
-              database optimization, and responsive web applications.
-            </p>
-
-          </div>
-
-        </div>
-
-        <div class="timeline-item">
-
-          <div class="timeline-dot"></div>
-
-          <div class="timeline-content">
-
-            <h3>Bachelor of Science in Computer Science</h3>
-
-            <span>Cavite State University – Silang Campus • 2019 - 2023</span>
-
-            <p>
-              Built a strong foundation in software engineering,
-              database systems, algorithms, networking,
-              and machine learning concepts.
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- CONTACT -->
-
-  <section id="contact">
-
-    <div class="container">
-
-      <div class="contact-box">
-
-        <h2>Let’s Build Something Great</h2>
-
-        <p>
-          Interested in working together or discussing a project?
-          Feel free to reach out for collaborations,
-          freelance projects, or full-time opportunities.
-        </p>
-
-        <a href="mailto:matthew.galang.dit.cvsu@gmail.com" class="btn btn-primary">
-          <i class="fa-solid fa-rocket"></i>
-          Start a Project
-        </a>
-
-        <div class="socials">
-
-          <a href="https://github.com/Matty2929" target="_blank">
-            <i class="fa-brands fa-github"></i>
-          </a>
-
-          <a href="https://www.linkedin.com/in/matthew-galang-815330290/" target="_blank">
-            <i class="fa-brands fa-linkedin"></i>
-          </a>
-
-          <!-- OPEN CV -->
-          <a href="MATTHEW.pdf" target="_blank" title="View CV">
-            <i class="fa-solid fa-file-code"></i>
-          </a>
-
-          <!-- DOWNLOAD CV -->
-          <a href="MATTHEW.pdf" download title="Download CV">
-            <i class="fa-solid fa-download"></i>
-          </a>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- FOOTER -->
-
-  <footer>
-    © 2026 Matthew Galang — Full-Stack Developer Portfolio
-  </footer>
+      <script>
+        $(document).ready(function () {
+          $(".owl-carousel").owlCarousel({
+            loop: true,
+            margin: 20,
+            nav: true,
+            dots: true,
+            autoplay: true,
+            autoplayTimeout: 3500,
+            autoplayHoverPause: true,
+            responsive: {
+              0: { items: 1 },
+              768: { items: 2 },
+              1200: { items: 3 }
+            }
+          });
+        });
+      </script>
 
 </body>
 
