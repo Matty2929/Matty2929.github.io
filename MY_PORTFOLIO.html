@@ -356,6 +356,47 @@
       font-size: 0.95rem;
     }
 
+    /* SKILLS */
+
+    .skills-carousel .owl-stage {
+      display: flex;
+    }
+
+    .skills-carousel .owl-item {
+      display: flex;
+    }
+
+    .skill-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 30px;
+      border-radius: 22px;
+      transition: 0.3s;
+      height: 100%;
+    }
+
+    .skill-box:hover {
+      transform: translateY(-5px);
+      background: var(--card2);
+    }
+
+    .skill-box i {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--secondary);
+    }
+
+    .skill-box h4 {
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+
+    .skill-box p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
     /* PROJECTS */
 
     .projects {
@@ -737,7 +778,8 @@
         </p>
       </div>
 
-      <div class="skills-grid">
+      <!-- OWL CAROUSEL -->
+      <div class="skills-carousel owl-carousel">
 
         <div class="skill-box">
           <i class="fa-solid fa-code"></i>
@@ -754,7 +796,7 @@
           <p>
             PHP, CodeIgniter, REST APIs, authentication systems,
             payroll computation logic, approval workflows,
-            audit logging, business logic implementation.
+            audit logging, and business logic implementation.
           </p>
         </div>
 
@@ -792,7 +834,7 @@
           <i class="fa-solid fa-git-alt"></i>
           <h4>Tools & Workflow</h4>
           <p>
-            Git, GitHub, ChatGPT, Gemini, Claude, DeepSeek,
+            Git, GitHub, VS Code, ChatGPT, Gemini, Claude,
             debugging, optimization, code review,
             and collaborative development.
           </p>
@@ -850,14 +892,14 @@
               <div class="project-content">
                 <h3>Medical E-Commerce</h3>
                 <p>
-                  Built a responsive medical e-commerce system with product management, inventory
+                  Built a responsive medical e-commerce system with product management, authentication, inventory
                   control, secure checkout, and order processing.
                 </p>
                 <div class="tags">
                   <div class="tag">JavaScript</div>
                   <div class="tag">PHP</div>
                   <div class="tag">MySQL</div>
-                  <div class="tag">Tailwind</div>
+                  <div class="tag">Bootstrap</div>
                 </div>
               </div>
             </div>
@@ -868,7 +910,7 @@
               <div class="project-content">
                 <h3>Canteen System</h3>
                 <p>
-                  Created a canteen system with offline Python barcode scanning and online admin panel featuring
+                  Created a canteen system with offline Python barcode scanning and CodeIgniter admin panel featuring
                   real-time sync, analytics, and cloud integration.
                 </p>
                 <div class="tags">
@@ -903,7 +945,7 @@
           </div>
         </div>
       </section>
-      
+
       <!-- EXPERIENCE -->
 
       <section id="experience">
@@ -1028,7 +1070,9 @@
 
       <script>
         $(document).ready(function () {
-          $(".owl-carousel").owlCarousel({
+
+          /* PROJECTS */
+          $(".projects").owlCarousel({
             loop: true,
             margin: 20,
             nav: true,
@@ -1042,6 +1086,23 @@
               1200: { items: 3 }
             }
           });
+
+          /* SKILLS */
+          $(".skills-carousel").owlCarousel({
+            loop: true,
+            margin: 20,
+            nav: true,
+            dots: true,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            autoplayHoverPause: true,
+            responsive: {
+              0: { items: 1 },
+              768: { items: 2 },
+              1200: { items: 3 }
+            }
+          });
+
         });
       </script>
 
