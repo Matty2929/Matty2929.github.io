@@ -4,1107 +4,1003 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Matthew Galang | Full-Stack Developer</title>
+  <title>Matthew Galang — Full-Stack Developer</title>
+  <meta name="description"
+    content="Matthew Galang — full-stack developer from Cavite, Philippines. I build HRMS platforms, payroll engines, offline-first systems, and the ML that ships with them." />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+  <link
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap"
     rel="stylesheet">
 
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-
-  <!-- Owl Carousel CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
-
   <style>
-    * {
+    :root {
+      --bg: #08090c;
+      --bg-2: #0b0d12;
+      --surface: rgba(255, 255, 255, 0.024);
+      --surface-2: rgba(255, 255, 255, 0.045);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-2: rgba(255, 255, 255, 0.16);
+      --text: #ededf0;
+      --text-2: #9ea0a8;
+      --text-3: #63656d;
+      --accent: #4d9fff;
+      --accent-2: #22d3ee;
+      --accent-soft: rgba(77, 159, 255, 0.14);
+      --glow: rgba(77, 159, 255, 0.45);
+      --sans: 'Geist', 'Inter', system-ui, -apple-system, sans-serif;
+      --mono: 'Geist Mono', ui-monospace, 'JetBrains Mono', monospace;
+      --max: 1140px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    *,
+    *::before,
+    *::after {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      scroll-behavior: smooth;
     }
 
-    :root {
-      --bg: #070b14;
-      --card: #101826;
-      --card2: #0d1420;
-      --primary: #4f8cff;
-      --secondary: #00d2ff;
-      --text: #ffffff;
-      --muted: #aab3c5;
-      --border: rgba(255, 255, 255, 0.08);
-      --gradient: linear-gradient(135deg, #4f8cff, #00d2ff);
-      --shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
     }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--sans);
       background: var(--bg);
       color: var(--text);
+      line-height: 1.6;
+      letter-spacing: -0.011em;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
       overflow-x: hidden;
     }
 
+    /* ambient light + faint grid, both fading out */
     body::before {
-      content: '';
+      content: "";
       position: fixed;
       inset: 0;
+      z-index: 0;
+      pointer-events: none;
       background:
-        radial-gradient(circle at top left, rgba(79, 140, 255, 0.20), transparent 25%),
-        radial-gradient(circle at bottom right, rgba(0, 210, 255, 0.15), transparent 25%);
-      z-index: -1;
+        radial-gradient(680px 420px at 50% -8%, rgba(77, 159, 255, 0.16), transparent 70%),
+        radial-gradient(520px 380px at 88% 8%, rgba(34, 211, 238, 0.07), transparent 70%);
     }
 
-    .container {
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+      background-size: 56px 56px;
+      -webkit-mask-image: radial-gradient(circle at 50% 0%, #000 0%, transparent 62%);
+      mask-image: radial-gradient(circle at 50% 0%, #000 0%, transparent 62%);
+    }
+
+    ::selection {
+      background: rgba(77, 159, 255, 0.28);
+      color: #fff;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
       width: 90%;
-      max-width: 1250px;
-      margin: auto;
+      max-width: var(--max);
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
     }
 
-    /* NAVBAR */
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+    }
 
+    .eyebrow::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--glow);
+    }
+
+    /* ---------- NAV ---------- */
     nav {
       position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 999;
-      backdrop-filter: blur(12px);
-      background: rgba(7, 11, 20, 0.75);
+      inset: 0 0 auto 0;
+      z-index: 100;
+      background: rgba(8, 9, 12, 0.72);
+      backdrop-filter: blur(14px) saturate(160%);
+      -webkit-backdrop-filter: blur(14px) saturate(160%);
       border-bottom: 1px solid var(--border);
     }
 
-    .nav-wrapper {
+    .nav-in {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 20px 0;
+      justify-content: space-between;
+      height: 64px;
     }
 
-    .logo {
-      font-size: 1.4rem;
-      font-weight: 800;
-      letter-spacing: 1px;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .logo-mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #fff;
+      background: linear-gradient(145deg, #1a2740, #0e1119);
+      border: 1px solid var(--border-2);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 0 18px rgba(77, 159, 255, 0.18);
     }
 
     .nav-links {
       display: flex;
-      gap: 35px;
+      gap: 30px;
+      align-items: center;
     }
 
     .nav-links a {
-      text-decoration: none;
-      color: var(--muted);
-      font-weight: 500;
-      transition: 0.3s;
+      font-size: 0.86rem;
+      color: var(--text-2);
+      transition: color 0.2s var(--ease);
     }
 
-    .nav-links a:hover {
-      color: #fff;
-    }
+    .nav-links a:hover { color: var(--text); }
 
-    /* HERO */
-
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      position: relative;
-    }
-
-    .hero-content {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .hero-text h3 {
-      color: var(--secondary);
-      margin-bottom: 15px;
-      font-size: 1rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .hero-text h1 {
-      font-size: 4rem;
-      line-height: 1.1;
-      margin-bottom: 20px;
-      font-weight: 800;
-    }
-
-    .hero-text h1 span {
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-text p {
-      color: var(--muted);
-      font-size: 1.05rem;
-      line-height: 1.8;
-      margin-bottom: 35px;
-      max-width: 700px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
+    .nav-right { display: flex; align-items: center; gap: 18px; }
 
     .btn {
-      padding: 15px 28px;
-      border-radius: 14px;
-      border: none;
-      cursor: pointer;
-      font-weight: 600;
-      transition: 0.3s;
-      text-decoration: none;
+      font-size: 0.86rem;
+      font-weight: 500;
+      padding: 9px 17px;
+      border-radius: 9px;
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.24s var(--ease);
+      border: 1px solid transparent;
+      white-space: nowrap;
     }
 
     .btn-primary {
-      background: var(--gradient);
-      color: #fff;
-      box-shadow: 0 10px 30px rgba(79, 140, 255, 0.35);
+      background: #fff;
+      color: #0a0a0a;
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 6px 22px rgba(0, 0, 0, 0.4);
     }
 
     .btn-primary:hover {
-      transform: translateY(-3px);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 30px rgba(77, 159, 255, 0.25);
     }
 
-    .btn-secondary {
-      background: transparent;
+    .btn-ghost {
+      background: var(--surface);
+      color: var(--text);
       border: 1px solid var(--border);
-      color: #fff;
     }
 
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.05);
+    .btn-ghost:hover {
+      background: var(--surface-2);
+      border-color: var(--border-2);
     }
 
-    .hero-card {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      padding: 40px;
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-    }
+    .nav .btn { padding: 8px 15px; }
 
-    .hero-card::before {
-      content: '';
-      position: absolute;
-      width: 200px;
-      height: 200px;
-      background: rgba(79, 140, 255, 0.15);
-      border-radius: 50%;
-      top: -80px;
-      right: -80px;
-      filter: blur(20px);
-    }
-
-    .code-window {
-      background: #0a101b;
-      border-radius: 18px;
-      padding: 25px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .code-header {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 20px;
-    }
-
-    .dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-    }
-
-    .red {
-      background: #ff5f57;
-    }
-
-    .yellow {
-      background: #febc2e;
-    }
-
-    .green {
-      background: #28c840;
-    }
-
-    .code {
-      font-family: monospace;
-      line-height: 2;
-      color: #d6e1ff;
-      font-size: 0.95rem;
-    }
-
-    .code .blue {
-      color: #61dafb;
-    }
-
-    .code .green-text {
-      color: #7ee787;
-    }
-
-    .code .purple {
-      color: #d2a8ff;
-    }
-
-    /* SECTION */
-
-    section {
-      padding: 110px 0;
-    }
-
-    .section-title {
+    /* ---------- HERO ---------- */
+    .hero {
+      padding: 168px 0 96px;
       text-align: center;
-      margin-bottom: 70px;
     }
 
-    .section-title h2 {
-      font-size: 2.7rem;
-      margin-bottom: 15px;
-    }
-
-    .section-title p {
-      color: var(--muted);
-      max-width: 650px;
-      margin: auto;
-      line-height: 1.7;
-    }
-
-    /* ABOUT */
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 35px;
-    }
-
-    .glass-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 35px;
-      transition: 0.3s;
-    }
-
-    .glass-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(79, 140, 255, 0.3);
-    }
-
-    .glass-card h3 {
-      margin-bottom: 20px;
-      font-size: 1.3rem;
-    }
-
-    .glass-card p {
-      color: var(--muted);
-      line-height: 1.8;
-    }
-
-    /* SKILLS */
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-    }
-
-    .skill-box {
-      background: var(--card);
-      border: 1px solid var(--border);
-      padding: 30px;
-      border-radius: 22px;
-      transition: 0.3s;
-    }
-
-    .skill-box:hover {
-      transform: translateY(-5px);
-      background: var(--card2);
-    }
-
-    .skill-box i {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: var(--secondary);
-    }
-
-    .skill-box h4 {
-      margin-bottom: 15px;
-      font-size: 1.1rem;
-    }
-
-    .skill-box p {
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 0.95rem;
-    }
-
-    /* SKILLS */
-
-    .skills-carousel .owl-stage {
-      display: flex;
-    }
-
-    .skills-carousel .owl-item {
-      display: flex;
-    }
-
-    .skill-box {
-      background: var(--card);
-      border: 1px solid var(--border);
-      padding: 30px;
-      border-radius: 22px;
-      transition: 0.3s;
-      height: 100%;
-    }
-
-    .skill-box:hover {
-      transform: translateY(-5px);
-      background: var(--card2);
-    }
-
-    .skill-box i {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: var(--secondary);
-    }
-
-    .skill-box h4 {
-      margin-bottom: 15px;
-      font-size: 1.1rem;
-    }
-
-    .skill-box p {
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 0.95rem;
-    }
-
-    /* PROJECTS */
-
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
-    }
-
-    .project-card {
-      background: linear-gradient(180deg, #101826, #0b121d);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      overflow: hidden;
-      transition: 0.35s;
-    }
-
-    .project-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(79, 140, 255, 0.35);
-    }
-
-    .project-image {
-      height: 220px;
-      background: linear-gradient(135deg, #4f8cff, #00d2ff);
-      display: flex;
+    .pill {
+      display: inline-flex;
       align-items: center;
+      gap: 10px;
+      padding: 6px 8px 6px 14px;
+      border-radius: 999px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--text-2);
+      margin-bottom: 34px;
+    }
+
+    .pill .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #3ee08a; position: relative;
+    }
+    .pill .dot::after {
+      content: ""; position: absolute; inset: 0; border-radius: 50%;
+      background: #3ee08a; animation: pulse 2.4s var(--ease) infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.55; }
+      100% { transform: scale(3.2); opacity: 0; }
+    }
+
+    .pill .chip {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.04em;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid rgba(77, 159, 255, 0.28);
+      padding: 3px 9px;
+      border-radius: 999px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 6.6vw, 5rem);
+      font-weight: 600;
+      line-height: 1.02;
+      letter-spacing: -0.035em;
+      max-width: 16ch;
+      margin: 0 auto 26px;
+      background: linear-gradient(180deg, #ffffff 30%, #b9bcc6 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero h1 .accent {
+      background: linear-gradient(180deg, #6fb3ff, #22d3ee);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 1.12rem;
+      color: var(--text-2);
+      max-width: 56ch;
+      margin: 0 auto 40px;
+      line-height: 1.65;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 14px;
       justify-content: center;
-      font-size: 3rem;
+      flex-wrap: wrap;
     }
 
-    .project-content {
-      padding: 30px;
-    }
+    .hero .btn { padding: 12px 22px; font-size: 0.94rem; }
 
-    .project-content h3 {
-      margin-bottom: 15px;
-    }
-
-    .project-content p {
-      color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 20px;
-    }
-
-    .tags {
+    .marquee {
+      margin-top: 76px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 22px 0;
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px 40px;
+    }
+
+    .marquee span {
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      letter-spacing: 0.02em;
+      color: var(--text-3);
+      transition: color 0.2s var(--ease);
+    }
+
+    .marquee span:hover { color: var(--text-2); }
+
+    /* ---------- SECTION SHELL ---------- */
+    section { padding: 92px 0; position: relative; }
+
+    .sec-head { margin-bottom: 48px; max-width: 60ch; }
+
+    .sec-head h2 {
+      font-size: clamp(1.9rem, 4vw, 2.7rem);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin: 16px 0 12px;
+    }
+
+    .sec-head p {
+      color: var(--text-2);
+      font-size: 1.02rem;
+      max-width: 52ch;
+    }
+
+    /* shared card */
+    .card {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      transition: border-color 0.3s var(--ease), transform 0.3s var(--ease), background 0.3s var(--ease);
+    }
+
+    /* cursor spotlight */
+    .glow::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(340px circle at var(--mx, 50%) var(--my, 0%), rgba(77, 159, 255, 0.14), transparent 62%);
+      opacity: 0;
+      transition: opacity 0.3s var(--ease);
+      pointer-events: none;
+    }
+
+    .glow:hover::before { opacity: 1; }
+
+    .glow:hover {
+      border-color: var(--border-2);
+      background: var(--surface-2);
+    }
+
+    /* ---------- ABOUT / BENTO ---------- */
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: minmax(150px, auto);
+      grid-auto-flow: dense;
+      gap: 16px;
+    }
+
+    .bento .card { padding: 28px; }
+
+    .b-about { grid-column: span 2; grid-row: span 2; display: flex; flex-direction: column; }
+    .b-focus { grid-column: span 2; }
+    .b-note { grid-column: span 2; }
+    .b-stat { grid-column: span 1; display: flex; flex-direction: column; justify-content: space-between; }
+
+    .b-label {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 16px;
+    }
+
+    .b-about h3 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+    }
+
+    .b-about p { color: var(--text-2); font-size: 0.98rem; }
+    .b-about p + p { margin-top: 14px; }
+
+    .b-stat .num {
+      font-size: 2.7rem;
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      background: linear-gradient(180deg, #fff, #9fb6d8);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .b-stat .cap {
+      font-size: 0.82rem;
+      color: var(--text-2);
+      margin-top: 10px;
+    }
+
+    .b-focus h3, .b-note h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .b-focus p, .b-note p { color: var(--text-2); font-size: 0.95rem; }
+
+    .b-note {
+      background: linear-gradient(135deg, rgba(77, 159, 255, 0.08), rgba(34, 211, 238, 0.04));
+      border-color: rgba(77, 159, 255, 0.2);
+    }
+
+    /* ---------- WORK ---------- */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .proj {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      min-height: 240px;
+    }
+
+    .proj-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 22px;
+    }
+
+    .proj-num {
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      color: var(--text-3);
+    }
+
+    .proj-yr {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--text-2);
+      border: 1px solid var(--border);
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+
+    .proj h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
       gap: 10px;
     }
 
-    .tag {
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: rgba(79, 140, 255, 0.12);
-      color: #9cc0ff;
-      font-size: 0.85rem;
+    .proj h3 .ar {
+      color: var(--text-3);
+      transition: transform 0.3s var(--ease), color 0.3s var(--ease);
     }
 
-    /* Owl*/
-    .owl-carousel .project-card {
-      margin: 10px;
+    .proj:hover h3 .ar { color: var(--accent); transform: translate(3px, -3px); }
+
+    .proj p {
+      color: var(--text-2);
+      font-size: 0.95rem;
+      flex: 1;
     }
 
-    .owl-nav button {
-      font-size: 30px !important;
-      color: white !important;
-    }
-
-    .owl-dots {
+    .proj-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
       margin-top: 20px;
     }
 
-    /* Make all owl items equal height */
-    .owl-carousel .owl-stage {
-      display: flex;
-    }
-
-    .owl-carousel .owl-item {
-      display: flex;
-    }
-
-    /* EXPERIENCE */
-
-    .timeline {
-      position: relative;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 20px;
-      top: 0;
-      width: 2px;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.1);
-    }
-
-    .timeline-item {
-      position: relative;
-      padding-left: 70px;
-      margin-bottom: 60px;
-    }
-
-    .timeline-dot {
-      position: absolute;
-      left: 10px;
-      top: 5px;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: var(--gradient);
-      box-shadow: 0 0 20px rgba(79, 140, 255, 0.5);
-    }
-
-    .timeline-content {
-      background: var(--card);
-      padding: 30px;
-      border-radius: 20px;
+    .proj-tags span {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--text-2);
+      background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--border);
+      padding: 4px 9px;
+      border-radius: 7px;
     }
 
-    .timeline-content h3 {
-      margin-bottom: 10px;
+    /* ---------- STACK ---------- */
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
     }
 
-    .timeline-content span {
-      color: var(--secondary);
-      font-size: 0.95rem;
+    .stack-card { padding: 26px; }
+
+    .stack-card .b-label { margin-bottom: 14px; color: var(--accent); }
+
+    .stack-card ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .stack-card li {
+      font-size: 0.86rem;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      padding: 6px 11px;
+      border-radius: 8px;
     }
 
-    .timeline-content p {
-      color: var(--muted);
-      margin-top: 18px;
-      line-height: 1.8;
+    /* ---------- EXPERIENCE ---------- */
+    .exp { display: grid; gap: 16px; }
+
+    .exp-item {
+      padding: 28px 30px;
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 30px;
+      align-items: start;
     }
 
+    .exp-when { font-family: var(--mono); font-size: 0.78rem; color: var(--text-3); padding-top: 4px; }
 
+    .exp-body h3 { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.02em; }
 
-    /* CONTACT */
+    .exp-body .org { color: var(--accent); font-size: 0.9rem; display: inline-block; margin: 4px 0 14px; }
 
-    .contact-box {
+    .exp-body p { color: var(--text-2); font-size: 0.96rem; max-width: 60ch; }
+
+    /* ---------- CONTACT ---------- */
+    .contact-card {
       text-align: center;
-      background: linear-gradient(180deg, #101826, #0a1019);
-      border: 1px solid var(--border);
-      padding: 60px;
-      border-radius: 30px;
+      padding: 76px 40px;
+      border-radius: 24px;
+      background:
+        radial-gradient(600px 300px at 50% -20%, rgba(77, 159, 255, 0.16), transparent 70%),
+        var(--surface);
+      border: 1px solid var(--border-2);
     }
 
-    .contact-box h2 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
+    .contact-card h2 {
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 600;
+      letter-spacing: -0.035em;
+      line-height: 1.05;
+      max-width: 18ch;
+      margin: 20px auto 18px;
     }
 
-    .contact-box p {
-      color: var(--muted);
-      max-width: 700px;
-      margin: auto auto 35px;
-      line-height: 1.8;
-    }
+    .contact-card p { color: var(--text-2); max-width: 46ch; margin: 0 auto 36px; }
+
+    .contact-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    .contact-actions .btn { padding: 13px 24px; font-size: 0.96rem; }
 
     .socials {
+      margin-top: 44px;
       display: flex;
+      gap: 10px 28px;
       justify-content: center;
-      gap: 20px;
-      margin-top: 35px;
+      flex-wrap: wrap;
     }
 
     .socials a {
-      width: 55px;
-      height: 55px;
-      display: flex;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--text-2);
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border);
-      color: #fff;
-      text-decoration: none;
-      transition: 0.3s;
-      font-size: 1.2rem;
+      gap: 7px;
+      transition: color 0.2s var(--ease);
     }
 
-    .socials a:hover {
-      transform: translateY(-5px);
-      background: rgba(79, 140, 255, 0.15);
-    }
+    .socials a .ar { color: var(--text-3); transition: transform 0.2s var(--ease), color 0.2s var(--ease); }
+    .socials a:hover { color: var(--text); }
+    .socials a:hover .ar { color: var(--accent); transform: translate(2px, -2px); }
 
+    /* ---------- FOOTER ---------- */
     footer {
-      text-align: center;
-      padding: 30px 0;
-      color: var(--muted);
       border-top: 1px solid var(--border);
+      padding: 30px 0 46px;
+      margin-top: 40px;
     }
 
-    /* RESPONSIVE */
-
-    @media(max-width:980px) {
-
-      .hero-content,
-      .about-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-text h1 {
-        font-size: 3rem;
-      }
-
-      .nav-links {
-        display: none;
-      }
+    .foot-in {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
     }
 
-    @media(max-width:600px) {
+    .foot-in span, .foot-in a {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--text-3);
+    }
 
-      .hero-text h1 {
-        font-size: 2.3rem;
-      }
+    .foot-in a:hover { color: var(--text-2); }
 
-      .section-title h2 {
-        font-size: 2rem;
-      }
+    /* ---------- REVEAL ---------- */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+    .reveal.in { opacity: 1; transform: none; }
 
-      .contact-box {
-        padding: 40px 25px;
-      }
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 880px) {
+      .nav-links { display: none; }
+      .bento { grid-template-columns: repeat(2, 1fr); }
+      .b-about { grid-column: span 2; grid-row: auto; }
+      .b-focus, .b-note { grid-column: span 2; }
+      .work-grid { grid-template-columns: 1fr; }
+      .stack-grid { grid-template-columns: 1fr; }
+      .exp-item { grid-template-columns: 1fr; gap: 10px; }
+    }
+
+    @media (max-width: 520px) {
+      .hero { padding: 140px 0 72px; }
+      .bento { grid-template-columns: 1fr; }
+      .b-about, .b-focus, .b-note, .b-stat { grid-column: auto; }
+      .nav .brand span.name { display: none; }
+      .marquee { gap: 12px 24px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      html { scroll-behavior: auto; }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
-
+  <!-- NAV -->
   <nav>
-    <div class="container nav-wrapper">
-      <div class="logo">mtthw.dev</div>
-
+    <div class="wrap nav-in">
+      <a href="#top" class="brand">
+        <span class="logo-mark">MG</span>
+        <span class="name">Matthew Galang</span>
+      </a>
       <div class="nav-links">
         <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
+        <a href="#work">Work</a>
+        <a href="#stack">Stack</a>
         <a href="#experience">Experience</a>
-        <a href="#contact">Contact</a>
+      </div>
+      <div class="nav-right">
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
       </div>
     </div>
   </nav>
 
   <!-- HERO -->
-
-  <section class="hero">
-    <div class="container hero-content">
-
-      <div class="hero-text">
-        <h3>Full-Stack Software Developer</h3>
-
-        <h1>
-          Building Modern <span>Web Systems</span> &
-          Smart Automation Solutions
-        </h1>
-
-        <p>
-          I’m Matthew Galang — a Full-Stack Developer specializing in HRMS systems,
-          payroll automation, IoT integrations, REST APIs, machine learning solutions,
-          and scalable business applications using PHP, JavaScript, Python, and MySQL.
-        </p>
-
-        <div class="hero-buttons">
-          <a href="#projects" class="btn btn-primary">
-            <i class="fa-solid fa-code"></i>
-            View Projects
-          </a>
-
-          <a href="#contact" class="btn btn-secondary">
-            <i class="fa-solid fa-paper-plane"></i>
-            Contact Me
-          </a>
-        </div>
+  <header class="hero" id="top">
+    <div class="wrap">
+      <div class="pill reveal">
+        <span class="dot"></span>
+        Available for work
+        <span class="chip">Cavite, PH</span>
       </div>
 
-      <div class="hero-card">
+      <h1 class="reveal">
+        I build the systems<br>businesses <span class="accent">run on.</span>
+      </h1>
 
-        <div class="code-window">
+      <p class="hero-sub reveal">
+        Full-stack developer focused on the unglamorous core — payroll engines, HRMS platforms,
+        and offline-first sync that has to work when the network doesn't. Backend-heavy, PHP and
+        Python, with computer vision bolted on when the problem earns it.
+      </p>
 
-          <div class="code-header">
-            <div class="dot red"></div>
-            <div class="dot yellow"></div>
-            <div class="dot green"></div>
-          </div>
-
-          <div class="code">
-            <span class="purple">const</span> developer = { <br><br>
-
-            &nbsp;&nbsp;<span class="blue">name</span>:
-            <span class="green-text">"Matthew Galang"</span>,<br>
-
-            &nbsp;&nbsp;<span class="blue">role</span>:
-            <span class="green-text">"Full-Stack Developer"</span>,<br>
-
-            &nbsp;&nbsp;<span class="blue">stack</span>: [
-            <span class="green-text">"PHP"</span>,
-            <span class="green-text">"JavaScript"</span>,
-            <span class="green-text">"Python"</span>
-            ],<br>
-
-            &nbsp;&nbsp;<span class="blue">specialties</span>: [
-            <span class="green-text">"HRMS"</span>,
-            <span class="green-text">"REST APIs"</span>,
-            <span class="green-text">"Automation"</span>,
-            <span class="green-text">"Machine Learning"</span>
-            ]<br><br>
-
-            };
-          </div>
-
-        </div>
-
+      <div class="hero-cta reveal">
+        <a href="#work" class="btn btn-primary">View work &rarr;</a>
+        <a href="MATTHEW.pdf" download class="btn btn-ghost">Download CV</a>
       </div>
 
+      <div class="marquee reveal">
+        <span>PHP</span><span>CodeIgniter</span><span>Python</span><span>MySQL</span>
+        <span>JavaScript</span><span>YOLOv8</span><span>REST APIs</span><span>Git</span>
+      </div>
     </div>
-  </section>
+  </header>
 
   <!-- ABOUT -->
-
   <section id="about">
-    <div class="container">
-
-      <div class="section-title">
-        <h2>About Me</h2>
-        <p>
-          Passionate about developing scalable systems, optimizing workflows,
-          and building reliable digital solutions for real-world business operations.
-        </p>
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">About</span>
+        <h2>Engineer of the things you never see</h2>
+        <p>The parts that don't make screenshots — data models, approval chains, sync layers — but decide whether the software actually holds up.</p>
       </div>
 
-      <div class="about-grid">
-
-        <div class="glass-card">
-          <h3>Who I Am</h3>
-
+      <div class="bento reveal">
+        <div class="card glow b-about">
+          <span class="b-label">// Who I am</span>
+          <h3>Backend-leaning full-stack, based in Cavite</h3>
           <p>
-            I’m a software developer with professional experience in developing
-            enterprise-grade HRMS systems, payroll processing platforms,
-            e-commerce systems, and automation tools.
-            I focus on writing maintainable code, building efficient backend logic,
-            and designing responsive user interfaces with modern technologies.
+            I studied Computer Science at Cavite State University and have been shipping production
+            systems since 2024 — mostly software that lives inside businesses rather than app stores.
+          </p>
+          <p>
+            HRMS and payroll platforms with real approval chains and audit trails, a canteen system
+            that scans barcodes offline and reconciles to the cloud, and vision models trained to
+            catch what a checklist would miss. I care about clear data models and code the next
+            person can actually read.
           </p>
         </div>
 
-        <div class="glass-card">
-          <h3>What I Do</h3>
-
-          <p>
-            I specialize in full-stack development using PHP (CodeIgniter),
-            JavaScript, MySQL, Python, and REST APIs.
-            I also work with IoT integrations, AI-assisted development workflows,
-            machine learning models using YOLO v8,
-            and cloud-to-offline synchronization systems.
-          </p>
+        <div class="card glow b-stat">
+          <span class="b-label">// Shipping</span>
+          <div>
+            <div class="num">2+</div>
+            <div class="cap">Years in production</div>
+          </div>
         </div>
 
-      </div>
+        <div class="card glow b-stat">
+          <span class="b-label">// Built</span>
+          <div>
+            <div class="num">4</div>
+            <div class="cap">Platforms end-to-end</div>
+          </div>
+        </div>
 
+        <div class="card glow b-focus">
+          <span class="b-label">// Focus</span>
+          <h3>Systems that fail loudly and recover quietly</h3>
+          <p>Payroll logic, approval workflows, offline-to-cloud sync, and the ML that ships alongside them.</p>
+        </div>
+
+        <div class="card glow b-note">
+          <span class="b-label">// Currently</span>
+          <h3>Full-Stack Developer @ Technos</h3>
+          <p>Owning HRMS, payroll, and distributed canteen features from schema to UI.</p>
+        </div>
+
+        <div class="card glow b-stat">
+          <span class="b-label">// Trained</span>
+          <div>
+            <div class="num">5+</div>
+            <div class="cap">YOLOv8 models deployed</div>
+          </div>
+        </div>
+
+        <div class="card glow b-stat">
+          <span class="b-label">// Stack</span>
+          <div>
+            <div class="num">PHP</div>
+            <div class="cap">+ Python, MySQL, JS</div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- SKILLS -->
-
-  <section id="skills">
-
-    <div class="container">
-
-      <div class="section-title">
-        <h2>Technical Skills</h2>
-        <p>
-          Technologies, frameworks, and tools I use to build scalable applications
-          and intelligent systems.
-        </p>
+  <!-- WORK -->
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Selected work</span>
+        <h2>Built for real operations, not demos</h2>
+        <p>Four systems that shipped and stayed running.</p>
       </div>
 
-      <!-- OWL CAROUSEL -->
-      <div class="skills-carousel owl-carousel">
+      <div class="work-grid reveal">
 
-        <div class="skill-box">
-          <i class="fa-solid fa-code"></i>
-          <h4>Frontend Development</h4>
+        <article class="card glow proj">
+          <div class="proj-top">
+            <span class="proj-num">01</span>
+            <span class="proj-yr">2024</span>
+          </div>
+          <h3>HRMS &amp; Payroll Engine <span class="ar">&#8599;</span></h3>
           <p>
-            HTML, CSS, JavaScript, jQuery, Bootstrap, TailwindCSS,
-            responsive UI/UX, modern web interfaces, reusable components.
+            End-to-end HR platform — attendance, overtime and leave logic, multi-step approvals,
+            audit logging, and a reporting dashboard finance actually trusts. Payroll math where a
+            rounding bug means someone's rent is short.
           </p>
-        </div>
+          <div class="proj-tags">
+            <span>PHP</span><span>CodeIgniter</span><span>MySQL</span><span>REST API</span>
+          </div>
+        </article>
 
-        <div class="skill-box">
-          <i class="fa-solid fa-server"></i>
-          <h4>Backend Development</h4>
+        <article class="card glow proj">
+          <div class="proj-top">
+            <span class="proj-num">02</span>
+            <span class="proj-yr">2024</span>
+          </div>
+          <h3>Offline-First Canteen <span class="ar">&#8599;</span></h3>
           <p>
-            PHP, CodeIgniter, REST APIs, authentication systems,
-            payroll computation logic, approval workflows,
-            audit logging, and business logic implementation.
+            A Python point-of-sale that scans barcodes with no connection, then reconciles to a
+            CodeIgniter admin panel the moment it's back online — real-time analytics on top,
+            built around the assumption that the network will fail.
           </p>
-        </div>
+          <div class="proj-tags">
+            <span>Python</span><span>CodeIgniter</span><span>MySQL</span><span>Sync</span>
+          </div>
+        </article>
 
-        <div class="skill-box">
-          <i class="fa-solid fa-database"></i>
-          <h4>Database Systems</h4>
+        <article class="card glow proj">
+          <div class="proj-top">
+            <span class="proj-num">03</span>
+            <span class="proj-yr">2025</span>
+          </div>
+          <h3>Medical E-Commerce <span class="ar">&#8599;</span></h3>
           <p>
-            MySQL, MariaDB, SQLite, database normalization,
-            query optimization, reporting systems,
-            and data traceability.
+            A responsive storefront for medical supplies with authentication, inventory control,
+            secure checkout, and order processing — built to keep stock counts honest across
+            concurrent orders.
           </p>
-        </div>
+          <div class="proj-tags">
+            <span>JavaScript</span><span>PHP</span><span>MySQL</span><span>Bootstrap</span>
+          </div>
+        </article>
 
-        <div class="skill-box">
-          <i class="fa-solid fa-microchip"></i>
-          <h4>IoT & Automation</h4>
+        <article class="card glow proj">
+          <div class="proj-top">
+            <span class="proj-num">04</span>
+            <span class="proj-yr">2024–25</span>
+          </div>
+          <h3>YOLOv8 Vision Systems <span class="ar">&#8599;</span></h3>
           <p>
-            Machine communication, automation systems,
-            cloud-to-device synchronization,
-            smart control systems, and real-time processing.
+            A run of object-detection models — waste classification, medicine validation, road-crack
+            detection — from dataset annotation through training to deployment. Where a checklist
+            relies on attention, these don't.
           </p>
-        </div>
-
-        <div class="skill-box">
-          <i class="fa-solid fa-robot"></i>
-          <h4>Machine Learning</h4>
-          <p>
-            YOLO v8 model training, dataset preparation,
-            annotation, object detection,
-            and AI-assisted development workflows.
-          </p>
-        </div>
-
-        <div class="skill-box">
-          <i class="fa-solid fa-git-alt"></i>
-          <h4>Tools & Workflow</h4>
-          <p>
-            Git, GitHub, VS Code, ChatGPT, Gemini, Claude,
-            debugging, optimization, code review,
-            and collaborative development.
-          </p>
-        </div>
+          <div class="proj-tags">
+            <span>Python</span><span>YOLOv8</span><span>Computer Vision</span><span>IoT</span>
+          </div>
+        </article>
 
       </div>
-
     </div>
-
   </section>
 
-  <!-- PROJECTS -->
+  <!-- STACK -->
+  <section id="stack">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Stack</span>
+        <h2>Tools I reach for</h2>
+        <p>Roughly grouped by how often they show up in a working day.</p>
+      </div>
 
-  <section id="projects">
+      <div class="stack-grid reveal">
+        <div class="card glow stack-card">
+          <span class="b-label">Backend</span>
+          <ul>
+            <li>PHP</li><li>CodeIgniter</li><li>REST APIs</li><li>Auth</li><li>Payroll logic</li><li>Audit trails</li>
+          </ul>
+        </div>
+        <div class="card glow stack-card">
+          <span class="b-label">Frontend</span>
+          <ul>
+            <li>JavaScript</li><li>HTML</li><li>CSS</li><li>jQuery</li><li>Tailwind</li><li>Bootstrap</li>
+          </ul>
+        </div>
+        <div class="card glow stack-card">
+          <span class="b-label">Data</span>
+          <ul>
+            <li>MySQL</li><li>MariaDB</li><li>SQLite</li><li>Schema design</li><li>Query tuning</li>
+          </ul>
+        </div>
+        <div class="card glow stack-card">
+          <span class="b-label">ML &amp; IoT</span>
+          <ul>
+            <li>Python</li><li>YOLOv8</li><li>Object detection</li><li>ESP-NOW</li><li>Cloud&#8596;offline sync</li>
+          </ul>
+        </div>
+        <div class="card glow stack-card">
+          <span class="b-label">Tooling</span>
+          <ul>
+            <li>Git</li><li>GitHub</li><li>VS Code</li><li>AI-assisted workflows</li><li>Code review</li>
+          </ul>
+        </div>
+        <div class="card glow stack-card">
+          <span class="b-label">Approach</span>
+          <ul>
+            <li>Readable code</li><li>Small deploys</li><li>Fail loud</li><li>Recover quiet</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <div class="container">
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Experience</span>
+        <h2>Where the hours have gone</h2>
+      </div>
 
-      <!-- PROJECTS -->
-      <section id="projects">
-
-        <div class="container">
-
-          <div class="section-title">
-            <h2>Featured Projects</h2>
+      <div class="exp reveal">
+        <div class="card glow exp-item">
+          <span class="exp-when">Jan 2024 — Present</span>
+          <div class="exp-body">
+            <h3>Full-Stack Developer</h3>
+            <span class="org">Technos Systems Engineering Services</span>
             <p>
-              Enterprise applications, automation systems,
-              and AI-powered solutions developed professionally.
+              Own features across HRMS, payroll, and distributed canteen platforms end-to-end — from
+              schema to UI. Built the offline-to-cloud sync layer, added ML integrations where they
+              earned their keep, and kept the backend something a small team can actually maintain.
             </p>
           </div>
-
-          <!-- OWL CAROUSEL -->
-          <div class="projects owl-carousel">
-
-            <!-- CARD 1 -->
-            <div class="project-card">
-              <div class="project-image"><i class="fa-solid fa-users-gear"></i></div>
-              <div class="project-content">
-                <h3>Payroll & HRMS System</h3>
-                <p>
-                  Developed an HRMS and payroll system with attendance tracking, overtime processing, leave management,
-                  approvals, and reporting dashboard.
-                </p>
-                <div class="tags">
-                  <div class="tag">PHP</div>
-                  <div class="tag">CodeIgniter</div>
-                  <div class="tag">MySQL</div>
-                  <div class="tag">REST API</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- CARD 2 -->
-            <div class="project-card">
-              <div class="project-image"><i class="fa-solid fa-store"></i></div>
-              <div class="project-content">
-                <h3>Medical E-Commerce</h3>
-                <p>
-                  Built a responsive medical e-commerce system with product management, authentication, inventory
-                  control, secure checkout, and order processing.
-                </p>
-                <div class="tags">
-                  <div class="tag">JavaScript</div>
-                  <div class="tag">PHP</div>
-                  <div class="tag">MySQL</div>
-                  <div class="tag">Bootstrap</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- CARD 3 -->
-            <div class="project-card">
-              <div class="project-image"><i class="fa-solid fa-utensils"></i></div>
-              <div class="project-content">
-                <h3>Canteen System</h3>
-                <p>
-                  Created a canteen system with offline Python barcode scanning and CodeIgniter admin panel featuring
-                  real-time sync, analytics, and cloud integration.
-                </p>
-                <div class="tags">
-                  <div class="tag">Python</div>
-                  <div class="tag">PHP</div>
-                  <div class="tag">CodeIgniter</div>
-                  <div class="tag">MySQL</div>
-                  <div class="tag">Barcode Scanning</div>
-                  <div class="tag">Sync System</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- CARD 4 -->
-            <div class="project-card">
-              <div class="project-image"><i class="fa-solid fa-brain"></i></div>
-              <div class="project-content">
-                <h3>YOLO AI Systems</h3>
-                <p>
-                  Developed AI systems for object detection, waste classification, medicine validation, road crack
-                  detection, and smart automation solutions.
-                </p>
-                <div class="tags">
-                  <div class="tag">Python</div>
-                  <div class="tag">YOLO v8</div>
-                  <div class="tag">Machine Learning</div>
-                  <div class="tag">AI</div>
-                </div>
-              </div>
-            </div>
-
-          </div>
         </div>
-      </section>
 
-      <!-- EXPERIENCE -->
-
-      <section id="experience">
-
-        <div class="container">
-
-          <div class="section-title">
-            <h2>Professional Experience</h2>
+        <div class="card glow exp-item">
+          <span class="exp-when">2019 — 2023</span>
+          <div class="exp-body">
+            <h3>BS Computer Science</h3>
+            <span class="org">Cavite State University — Silang Campus</span>
             <p>
-              My professional journey in software development and system engineering.
+              Grounding in software engineering, databases, algorithms, networking, and the
+              machine-learning fundamentals I still lean on — then straight into building the kind of
+              systems the coursework only sketched.
             </p>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-          <div class="timeline">
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-card reveal">
+        <span class="eyebrow" style="justify-content:center;">Contact</span>
+        <h2>Have a system that needs building?</h2>
+        <p>Open to freelance projects and full-time roles. Fastest way to reach me is email.</p>
 
-            <div class="timeline-item">
-
-              <div class="timeline-dot"></div>
-
-              <div class="timeline-content">
-
-                <h3>Full-Stack Developer</h3>
-
-                <span>Technos Systems Engineering Services • Jan 2024 - Present</span>
-
-                <p>
-                  Developed enterprise HRMS systems, payroll solutions,
-                  distributed canteen management platforms,
-                  machine learning integrations, and automation systems.
-                  Focused on scalable backend architecture,
-                  database optimization, and responsive web applications.
-                </p>
-
-              </div>
-
-            </div>
-
-            <div class="timeline-item">
-
-              <div class="timeline-dot"></div>
-
-              <div class="timeline-content">
-
-                <h3>Bachelor of Science in Computer Science</h3>
-
-                <span>Cavite State University – Silang Campus • 2019 - 2023</span>
-
-                <p>
-                  Built a strong foundation in software engineering,
-                  database systems, algorithms, networking,
-                  and machine learning concepts.
-                </p>
-
-              </div>
-
-            </div>
-
-          </div>
-
+        <div class="contact-actions">
+          <a class="btn btn-primary"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=matthew.galang.dit.cvsu@gmail.com&su=Project%20Inquiry"
+            target="_blank" rel="noopener">Start a conversation &rarr;</a>
+          <a class="btn btn-ghost" href="MATTHEW.pdf" target="_blank" rel="noopener">View CV</a>
         </div>
 
-      </section>
-
-      <!-- CONTACT -->
-
-      <section id="contact">
-
-        <div class="container">
-
-          <div class="contact-box">
-
-            <h2>Let’s Build Something Great</h2>
-
-            <p>
-              Interested in working together or discussing a project?
-              Feel free to reach out for collaborations,
-              freelance projects, or full-time opportunities.
-            </p>
-
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=matthew.galang.dit.cvsu@gmail.com&su=Project%20Inquiry"
-              target="_blank" class="btn btn-primary">
-              <i class="fa-solid fa-rocket"></i>
-              Start a Project
-            </a>
-
-            <div class="socials">
-
-              <a href="https://github.com/Matty2929" target="_blank">
-                <i class="fa-brands fa-github"></i>
-              </a>
-
-              <a href="https://www.linkedin.com/in/matthew-galang-815330290/" target="_blank">
-                <i class="fa-brands fa-linkedin"></i>
-              </a>
-
-              <!-- OPEN CV -->
-              <a href="MATTHEW.pdf" target="_blank" title="View CV">
-                <i class="fa-solid fa-file-pdf"></i> </a>
-
-              <!-- DOWNLOAD CV -->
-              <a href="MATTHEW.pdf" download title="Download CV">
-                <i class="fa-solid fa-download"></i>
-              </a>
-
-            </div>
-
-          </div>
-
+        <div class="socials">
+          <a href="https://github.com/Matty2929" target="_blank" rel="noopener">GitHub <span class="ar">&#8599;</span></a>
+          <a href="https://www.linkedin.com/in/matthew-galang-815330290/" target="_blank" rel="noopener">LinkedIn <span class="ar">&#8599;</span></a>
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=matthew.galang.dit.cvsu@gmail.com" target="_blank" rel="noopener">Email <span class="ar">&#8599;</span></a>
         </div>
+      </div>
+    </div>
+  </section>
 
-      </section>
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap foot-in">
+      <span>&copy; 2026 Matthew Galang</span>
+      <span>Designed &amp; built by hand</span>
+      <a href="#top">Back to top &#8593;</a>
+    </div>
+  </footer>
 
-      <!-- FOOTER -->
-
-      <footer>
-        © 2026 Matthew Galang — Full-Stack Developer Portfolio
-      </footer>
-
-      <!-- SCRIPTS -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-
-      <script>
-        $(document).ready(function () {
-
-          /* PROJECTS */
-          $(".projects").owlCarousel({
-            loop: true,
-            margin: 20,
-            nav: true,
-            dots: true,
-            autoplay: true,
-            autoplayTimeout: 3500,
-            autoplayHoverPause: true,
-            responsive: {
-              0: { items: 1 },
-              768: { items: 2 },
-              1200: { items: 3 }
-            }
+  <script>
+    // Reveal on scroll
+    (function () {
+      var els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('in'); });
+      } else {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
           });
+        }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+        els.forEach(function (el) { io.observe(el); });
+      }
+    })();
 
-          /* SKILLS */
-          $(".skills-carousel").owlCarousel({
-            loop: true,
-            margin: 20,
-            nav: true,
-            dots: true,
-            autoplay: true,
-            autoplayTimeout: 3000,
-            autoplayHoverPause: true,
-            responsive: {
-              0: { items: 1 },
-              768: { items: 2 },
-              1200: { items: 3 }
-            }
-          });
-
+    // Cursor-tracking spotlight on cards
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var cards = document.querySelectorAll('.glow');
+      cards.forEach(function (card) {
+        card.addEventListener('pointermove', function (e) {
+          var r = card.getBoundingClientRect();
+          card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+          card.style.setProperty('--my', (e.clientY - r.top) + 'px');
         });
-      </script>
+      });
+    })();
+  </script>
 
 </body>
 
