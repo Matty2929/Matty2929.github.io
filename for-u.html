@@ -587,9 +587,8 @@
 
         .btn.dodge {
             margin-top: 0;
-            transition: left 0.35s cubic-bezier(.34, 1.56, .64, 1),
-                top 0.35s cubic-bezier(.34, 1.56, .64, 1);
-            will-change: left, top;
+            transition: transform 0.3s cubic-bezier(.34, 1.56, .64, 1);
+            will-change: transform;
         }
 
         .reply-result {
@@ -1704,36 +1703,58 @@
             "Catch me! 🙈", "Wrong one 💅", "Just say it 💖", "Uh-uh 🙅‍♀️"];
         let taunt = 0;
 
+        let dodgeTX = 0, dodgeTY = 0;
         function dodge(e) {
             if (e) e.preventDefault();
-            const card = thanksBtn.closest(".card");
-            const cr = card.getBoundingClientRect();
-            const bw = thanksBtn.offsetWidth, bh = thanksBtn.offsetHeight, m = 8;
-            const rect = thanksBtn.getBoundingClientRect();
-            const cx = rect.left + rect.width / 2;
-            const cy = rect.top + rect.height / 2;
 
-            const minLeft = cr.left + m, maxLeft = cr.right - bw - m;
-            const minTop = cr.top + m, maxTop = cr.bottom - bh - m;
-            const midX = (cr.left + cr.right) / 2, midY = (cr.top + cr.bottom) / 2;
-
-            let left = cx < midX
-                ? midX + Math.random() * (maxLeft - midX)
-                : minLeft + Math.random() * (midX - minLeft);
-            let top = cy < midY
-                ? midY + Math.random() * (maxTop - midY)
-                : minTop + Math.random() * (midY - minTop);
-
-            left = Math.max(minLeft, Math.min(left, maxLeft));
-            top = Math.max(minTop, Math.min(top, maxTop));
-
-            thanksBtn.style.position = "fixed";
-            thanksBtn.style.left = left + "px";
-            thanksBtn.style.top = top + "px";
-            thanksBtn.style.transform = "";
-            thanksBtn.style.zIndex = "50";
             thanksBtn.textContent = TAUNTS[taunt % TAUNTS.length];
             taunt++;
+
+            const prev = thanksBtn.style.transform;
+            thanksBtn.style.transform = "none";
+            const nat = thanksBtn.getBoundingClientRect();
+            thanksBtn.style.transform = prev;
+
+            const cr = thanksBtn.closest(".card").getBoundingClientRect();
+            const m = 8;
+            const minTX = cr.left + m - nat.left;
+            const maxTX = cr.right - m - nat.right;
+            const minTY = cr.top + m - nat.top;
+            const maxTY = cr.bottom - m - nat.bottom;
+
+            let px = null, py = null;
+            if (e) {
+                if (e.touches && e.touches[0]) { px = e.touches[0].clientX; py = e.touches[0].clientY; }
+                else if (typeof e.clientX === "number") { px = e.clientX; py = e.clientY; }
+            }
+
+            let best = null, bestScore = -1;
+            for (let i = 0; i < 16; i++) {
+                const ang = Math.random() * Math.PI * 2;
+                const d = 70 + Math.random() * 40;
+                let tx = dodgeTX + Math.cos(ang) * d;
+                let ty = dodgeTY + Math.sin(ang) * d;
+                tx = Math.max(minTX, Math.min(tx, maxTX));
+                ty = Math.max(minTY, Math.min(ty, maxTY));
+                const moved = Math.hypot(tx - dodgeTX, ty - dodgeTY);
+                if (moved < 40) continue;
+                let score = moved;
+                if (px !== null) {
+                    const bcx = nat.left + tx + nat.width / 2;
+                    const bcy = nat.top + ty + nat.height / 2;
+                    score += Math.hypot(bcx - px, bcy - py) * 0.5;
+                }
+                if (score > bestScore) { bestScore = score; best = { tx, ty }; }
+            }
+            if (!best) {
+                best = {
+                    tx: minTX + Math.random() * Math.max(0, maxTX - minTX),
+                    ty: minTY + Math.random() * Math.max(0, maxTY - minTY)
+                };
+            }
+
+            dodgeTX = best.tx; dodgeTY = best.ty;
+            thanksBtn.style.transform = "translate(" + dodgeTX + "px, " + dodgeTY + "px)";
         }
 
         thanksBtn.addEventListener("mouseenter", dodge);
@@ -1758,6 +1779,7 @@
             letterTyped = false;
             candleOut = false; opened = false;
             taunt = 0;
+            dodgeTX = 0; dodgeTY = 0;
             thanksBtn.style.cssText = "";
             thanksBtn.textContent = "🙂 Thank you";
             document.getElementById("replyZone").classList.add("hidden");
