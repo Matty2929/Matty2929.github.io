@@ -1509,6 +1509,7 @@
         function blowOut() {
             if (candleOut) return;
             candleOut = true;
+            stopMic();
             flame.classList.add("out");
             document.getElementById("blowHint").textContent = "✨ Wish made! ✨";
             launchBalloons(24);
@@ -1519,17 +1520,34 @@
         document.getElementById("candle").addEventListener("click", blowOut);
         flame.addEventListener("click", blowOut);
 
+        let micListening = false;
+        let micStop = null;
+        function stopMic() {
+            if (micStop) micStop();
+        }
         function startMic() {
+            if (micListening) return;
             if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) return;
             navigator.mediaDevices.getUserMedia({audio: true}).then(stream => {
+                micListening = true;
                 const ctx = new (window.AudioContext || window.webkitAudioContext)();
                 const src = ctx.createMediaStreamSource(stream);
                 const analyser = ctx.createAnalyser();
                 analyser.fftSize = 512;
                 src.connect(analyser);
                 const data = new Uint8Array(analyser.frequencyBinCount);
+                micStop = () => {
+                    stream.getTracks().forEach(t => t.stop());
+                    if (ctx.state !== "closed") ctx.close();
+                    micListening = false;
+                    micStop = null;
+                };
                 (function check() {
-                    if (candleOut) {stream.getTracks().forEach(t => t.stop()); return;}
+                    if (!micListening) return;
+                    if (candleOut || !document.getElementById("scene2").classList.contains("active")) {
+                        stopMic();
+                        return;
+                    }
                     analyser.getByteFrequencyData(data);
                     let sum = 0;
                     for (let i = 0; i < data.length; i++) sum += data[i];
@@ -1537,6 +1555,7 @@
                     requestAnimationFrame(check);
                 })();
             }).catch(() => {
+                micListening = false;
                 document.getElementById("blowHint").innerHTML = "Tap the flame to blow out the candle 🕯️";
             });
         }
@@ -1776,6 +1795,7 @@
         }
 
         function restart() {
+            stopMic();
             letterTyped = false;
             candleOut = false; opened = false;
             taunt = 0;
@@ -2258,10 +2278,9 @@
             else clearTimeout(musicTimer);
         }
 
-        /* ---- kick off mic listening on the cake scene ---- */
+        /* ---- kick off mic listening every time the cake scene opens ---- */
         const observer = new MutationObserver(() => {
-            if (document.getElementById("scene2").classList.contains("active") && !candleOut) {
-                observer.disconnect();
+            if (document.getElementById("scene2").classList.contains("active") && !candleOut && !micListening) {
                 startMic();
             }
         });
